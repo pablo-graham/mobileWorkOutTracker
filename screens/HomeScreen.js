@@ -4,7 +4,7 @@ import React, { useState } from "react";
 export default function HomeScreen({ navigation }) {
     return (
       <View style={styles.homeScreen}>
-        <Text style={styles.homeScreenText}>Home Screen</Text>
+        <Text style={styles.homeScreenText}>Hello user</Text>
       </View>
     );
   }
