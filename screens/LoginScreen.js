@@ -1,28 +1,66 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Button, } from "react-native";
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { auth,onAuthStateChanged,signInWithEmailAndPassword} from '../firebase'
 export default function LoginScreen({ navigation }) {
-  const [userName, setUserName] = useState('userName');
-  const [password, setPassword] = useState('password')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if(user){
+            navigation.navigate("HomeScreen")
+        }
+    });
+
+    return unsubscribe
+      
+},[])
+
+
+const handleSignUp = () => {
+    navigation.navigate("SignUpScreen")
+}
+
+const handleLogIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(`Logged in with: ${user.email}`)
+        })
+        . catch(error => alert("Need to sign up"));
+        console.log("not signed up")
+
+}
   return (
     <View style={styles.loginScreen}>
       <View style={styles.topView}>
-        <Text style={styles.loginScreenText}>Mobile Workout Tracker</Text>
+        <Text style={styles.loginScreenText}>Mobile Workout Tracker Login</Text>
       </View>
       <View style={styles.bottomView}>
         <TextInput
           style={styles.input} 
-          placeholder="User Name"
-          onChangeText={(user) => setUserName(user)}
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.input} 
           placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
         />
         <View>
           <Button 
             title="log in" 
-            onPress={() => navigation.navigate('HomeScreen')}
+            onPress={handleLogIn}
+            color="#6D98F4"
+          />
+        </View>
+        <View>
+          <Button 
+            title="Register" 
+            onPress={handleSignUp}
             color="#6D98F4"
           />
         </View>
