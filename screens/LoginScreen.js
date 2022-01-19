@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
   },
   loginScreenText: {
     fontSize: 32,
+    textAlign: "center"
   },
   topView: {
     flex: 1,
