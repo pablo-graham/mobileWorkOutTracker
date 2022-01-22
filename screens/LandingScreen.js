@@ -21,4 +21,8 @@ const styles = StyleSheet.create({
   landingScreenText: {
     fontSize: 32,
   },
+  logo: {
+    width: 200,
+    height: 200
+  }
 });
