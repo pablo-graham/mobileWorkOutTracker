@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import SignUpScreen from "./screens/SignupScreen";
+
 const Stack = createStackNavigator();
 
 
@@ -22,6 +23,8 @@ export default function App() {
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

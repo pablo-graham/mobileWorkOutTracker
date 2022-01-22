@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Button, } from "react-native";
 import React, { useEffect, useState } from "react";
 import { auth, createUserWithEmailAndPassword,onAuthStateChanged,} from '../firebase'
+import LoginSignupTop from "../components/loginSignupTop";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -32,9 +33,15 @@ const handleSignUp = () => {
   return (
     <View style={styles.loginScreen}>
       <View style={styles.topView}>
-        <Text style={styles.loginScreenText}>Mobile Workout Tracker SignUp</Text>
+        <LoginSignupTop />
       </View>
       <View style={styles.bottomView}>
+      <TextInput
+          style={styles.input} 
+          placeholder="Name"
+          // value={Name}
+          // onChangeText={(text) => setPassword(text)}
+        />
         <TextInput
           style={styles.input} 
           placeholder="Email"
@@ -75,8 +82,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center', 
     justifyContent: 'center',
+    marginTop: 75
   },
   bottomView: {
+    marginTop: 50,
     flex: 2,
     alignItems: 'center', 
   },
