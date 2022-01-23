@@ -1,22 +1,24 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Button } from "react-native";
+import {KeyboardAvoidingView, StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Button } from "react-native";
 import React, { useState } from "react";
 import LoginSignupTop from "../components/loginSignupTop";
 
 export default function LandingScreen({ navigation }) {
   return (
     <View style={styles.landingScreen}>
-      <View style={styles.top}>
-        <LoginSignupTop />
-        <Text style={styles.appNameText}>Workout Tracker</Text>
-      </View>
-      <View style={styles.aboutUs}>
-        <Text style={styles.landingScreenText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text>
-      </View>
-      <View style={styles.getStarted}>
-        <View style={styles.getStartedButton}>
-          <Text style={styles.getStartedButtonText} onPress={() => navigation.navigate('HomeScreen')}>Get Started!</Text>
+      <View style={styles.landingScreenContent}>
+        <View style={styles.top}>
+          <LoginSignupTop />
+          <Text style={styles.appNameText}>Workout Tracker</Text>
         </View>
-        <Text style={styles.logInButton} onPress={() => navigation.navigate("LoginScreen")}> LOG IN </Text>
+        <View style={styles.aboutUs}>
+          <Text style={styles.landingScreenText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text>
+        </View>
+        <View style={styles.getStarted}>
+          <View style={styles.getStartedButton}>
+            <Text style={styles.getStartedButtonText} onPress={() => navigation.navigate('SignUpScreen')}>Get Started!</Text>
+          </View>
+          <Text style={styles.logInButton} onPress={() => navigation.navigate("LoginScreen")}> LOG IN </Text>
+        </View>
       </View>
     </View>
   );
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center',
-    backgroundColor: "#EEEEEE"
+    backgroundColor: "white",
   },
   top: {
     flex: 1
@@ -68,5 +70,8 @@ const styles = StyleSheet.create({
   logInButton: {
     alignSelf: "center",
     marginTop: 25
+  },
+  landingScreenContent: {
+    marginTop: 150
   }
 });

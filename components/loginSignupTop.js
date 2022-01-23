@@ -39,5 +39,5 @@ const styles = StyleSheet.create({
       // textAlign: "center",
       // flex: 1,
       fontSize: 15
-    }
+    },
   });
