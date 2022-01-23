@@ -8,16 +8,16 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState('')
 
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if(user){
-            navigation.navigate("HomeScreen")
-        }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //       if(user){
+  //           navigation.navigate("HomeScreen")
+  //       }
+  //   });
 
-    return unsubscribe
+  //   return unsubscribe
       
-},[])
+  // },[])
 
 
 const handleSignUp = () => {
@@ -38,6 +38,10 @@ const handleLogIn = () => {
     <View style={styles.loginScreen}>
       <View style={styles.topView}>
         <LoginSignupTop />
+        <View style={styles.signContainer}>
+          <Text style={styles.signIn}>SIGN-IN</Text>
+          <Text onPress={handleSignUp} style={styles.signUp}>SIGN-UP</Text>
+        </View>
       </View>
       <View style={styles.bottomView}>
         <TextInput
@@ -52,20 +56,21 @@ const handleLogIn = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-        <View>
-          <Button 
+        <View style={styles.loginBtn}>
+          <Text onPress={handleLogIn} style={styles.loginBtnTxt}>Login</Text>
+          {/* <Button 
             title="log in" 
             onPress={handleLogIn}
             color="#6D98F4"
-          />
+          /> */}
         </View>
-        <View>
+        {/* <View>
           <Button 
             title="Register" 
             onPress={handleSignUp}
             color="#6D98F4"
           />
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -78,12 +83,29 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center',
+    backgroundColor: "#EEEEEE"
   },
   topView: {
     flex: 1,
+    width: "100%",
     alignItems: 'center', 
     justifyContent: 'center',
-    marginTop: 75
+    borderBottomColor: "black",
+    borderBottomWidth: 5,
+  },
+  signContainer: {
+    width: "100%",
+    
+    flexDirection: "row",
+  },
+  signIn: {
+    flex: 3,
+    textAlign: "right",
+    fontStyle: "italic",
+  },
+  signUp: {
+    flex: 1,
+    textAlign: "center",
   },
   bottomView: {
     marginTop: 50,
@@ -91,11 +113,35 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
   },
   input: {
-    width: 200,
+    width: 250,
+    height: 44,
     margin: 10,
     borderWidth: 1,
-    borderColor: "#777",
+    borderColor: "#EEEEEE",
+    backgroundColor: "#EEEEEE",
+    borderRadius: 10,
     padding: 8,
-    textAlign: 'center'
+    textAlign: 'center',
+    shadowColor: "grey",
+    shadowOpacity: 0.50,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 1,
+      width: 1    },
   },
+  loginBtn: {
+    backgroundColor: "#6D98F4",
+    alignSelf: "center",
+    width: 150,
+    height: 35,
+    borderRadius: 10,
+    justifyContent: "center",
+    marginTop: 10
+  },
+  loginBtnTxt: {
+    color: "#FFFDFD",
+    alignSelf: "center",
+    fontSize: 14,
+    fontWeight: "bold",
+  }
 });
